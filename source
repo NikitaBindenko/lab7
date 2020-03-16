@@ -1,0 +1,52 @@
+#include"header.h"
+
+void division(long num, char output[], int system)
+{
+	char letter;
+	int i = 0, j = 0;
+
+	unsigned a = num;
+	unsigned b = system;  // b для того чтобы выбирать систему счисления
+
+	for (i = 0; i < 32; i++)
+	{
+		output[i] = { 0 };
+	}
+	i = 0;
+
+	while (a >= b)
+	{
+		int rem = a % b;
+		a = a / b;
+
+		if (rem >= 10)
+		{
+			letter = (char)(87 + rem);
+		}
+		else
+		{
+			letter = (char)(48 + rem);
+		}
+		output[i++] = letter;
+	}
+	if (a >= 10)
+	{
+		output[i] = (char)(87 + a);
+	}
+	else
+	{
+		output[i] = (char)(48 + a);
+	}
+
+
+
+	while (j < i)
+	{
+		char change;
+		change = output[i];
+		output[i] = output[j];
+		output[j] = change;
+		j++;
+		i--;
+	}
+}
