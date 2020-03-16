@@ -1,0 +1,49 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
+#include <string.h>
+#define ITERATION 100
+
+int main()
+{
+	long a;
+	char output[32];
+	char check[32];
+	int cmp;
+	int count = 0;
+	int system;
+
+	printf("Choose the system of numeration\n");
+	scanf_s("%d", &system);
+
+	for (int counter = 0; counter != ITERATION; counter++) //генерирую ITERATION чисел
+	{
+		a = rand();
+		//scanf_s("%d", &a);
+
+		printf("\nSeed is:		%d\n", a);
+
+		division(a, output, system);
+
+		printf("\nMy func turns it into:	%s\n", output);
+
+		_ltoa(a, check, system);
+		printf("\nC func turns it into:	%s\n", check);
+
+		cmp = strcmp(output, check);
+		if (cmp == 0)
+		{
+			printf("\nResult:	%d\n", cmp);
+		}
+		else
+		{
+			printf("\nResult is incorrect\n");
+			count++;
+		}
+	}
+
+	printf("%d of 100 are incorrect", count);
+
+	return 0;
+}
