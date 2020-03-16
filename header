@@ -1,0 +1,2 @@
+#pragma once
+void division(long a, char output[], int system);
